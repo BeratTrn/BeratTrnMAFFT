@@ -1,4 +1,4 @@
 from .core import MafftCore
 
-__version__ = "0.1.0"
-__author__ = "Berat"
+__version__ = "0.1.1"
+__author__ = "Berat Turan"
