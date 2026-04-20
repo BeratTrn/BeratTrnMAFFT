@@ -1,0 +1,13 @@
+# Python önbellek dosyaları
+__pycache__/
+*.py[cod]
+
+# PyPI derleme ve paketleme klasörleri
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Mac/Windows sistem dosyaları (Eğer oluşursa diye)
+.DS_Store
+Thumbs.db
