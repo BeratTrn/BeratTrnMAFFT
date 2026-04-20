@@ -11,3 +11,5 @@ dist/
 # Mac/Windows sistem dosyaları (Eğer oluşursa diye)
 .DS_Store
 Thumbs.db
+
+.env
