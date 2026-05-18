@@ -22,4 +22,63 @@ Bu kütüphane, İstanbul Rumeli Üniversitesi Biyoinformatik dersi dönem proje
 
 ## 📦 Kurulum
 
-Kütüphaneyi Py
+Kütüphaneyi PyPI üzerinden pip kullanarak kolayca sisteminize kurabilirsiniz:
+
+```bash
+pip install BeratTrnMAFFT
+```
+
+---
+
+## 🚀 Kullanım
+
+```python
+from BeratTrnMAFFT import MAFFTHizalayici
+from BeratTrnMAFFT.utils import fasta_oku, hizalamali_yazdir
+
+# FASTA dosyasını oku
+veriler = fasta_oku("ornek.fasta")
+isimler = [v[0] for v in veriler]
+diziler = [v[1] for v in veriler]
+
+# Hizala
+hizalayici = MAFFTHizalayici()
+son_isimler, hizalanmis = hizalayici.coklu_hizala(diziler, isimler)
+
+# Sonucu yazdır
+hizalamali_yazdir(son_isimler, hizalanmis)
+```
+
+---
+
+## 🔬 Algoritma
+
+| Aşama | Yöntem | Açıklama |
+|-------|--------|----------|
+| 1 | FFT Korelasyon | One-hot encoding + çapraz korelasyon ile benzerlik skoru |
+| 2 | UPGMA | Mesafe matrisinden hiyerarşik kılavuz ağaç |
+| 3 | Progressive Alignment | Needleman-Wunsch + Profil-Profil hizalaması |
+
+---
+
+## 📁 Paket Yapısı
+
+```
+BeratTrnMAFFT/
+├── __init__.py        # Paket girişi
+├── core.py            # Ana MAFFT motoru (3 aşama)
+├── alignment.py       # Needleman-Wunsch + Profil hizalaması
+├── guide_tree.py      # UPGMA kılavuz ağaç
+├── utils.py           # FASTA okuma, yazdırma
+└── visualization.py   # Grafik ve görselleştirme
+```
+
+---
+
+## 📋 Gereksinimler
+
+- Python 3.7+
+- numpy >= 1.20
+- matplotlib
+- seaborn
+- scipy
