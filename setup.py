@@ -1,20 +1,63 @@
+"""
+PyPI Paket Kurulum Dosyası
+pip install BeratTrnMAFFT   komutuyla kurulabilmesi için bu dosya gerekli.
+"""
+
 from setuptools import setup, find_packages
 import os
 
-# README dosyasının içeriğini okutuyoruz
-with open("README.md", "r", encoding="utf-8") as fh:
-    uzun_aciklama = fh.read()
+here = os.path.abspath(os.path.dirname(__file__))
+readme_yolu = os.path.join(here, "README.md")
+
+if os.path.exists(readme_yolu):
+    with open(readme_yolu, "r", encoding="utf-8") as f:
+        uzun_aciklama = f.read()
+else:
+    uzun_aciklama = "MAFFT tabanlı çoklu dizi hizalama (MSA) paketi."
 
 setup(
-    name="BeratTrnMAFFT", 
-    version="0.1.1", # VERSİYONU 0.1.1 YAPTIK!
+    # ── Paket Kimliği ────────────────────────────────────────────
+    name="BeratTrnMAFFT",
+    version="1.0.0",
+
+    # ── Yazar Bilgileri ──────────────────────────────────────────
     author="Berat Turan",
-    description="Biyoinformatik dersi MAFFT algoritması dönem projesi",
-    long_description=uzun_aciklama, # README'deki yazıları buraya aktarıyor
-    long_description_content_type="text/markdown", # Yazının formatını belirtiyor
+    author_email="turanberatr@gmail.com",
+
+    # ── Açıklama ─────────────────────────────────────────────────
+    description=(
+        "MAFFT (Multiple Alignment using Fast Fourier Transform) "
+        "algoritmasının Python implementasyonu. "
+        "Biyoinformatik dersi dönem projesi — Öğrenci No: 221201018"
+    ),
+    long_description=uzun_aciklama,
+    long_description_content_type="text/markdown",
+
+    # ── URL ──────────────────────────────────────────────────────
+    url="https://github.com/BeratTuran/BeratTrnMAFFT", 
+
+    # ── Paket Bulma ──────────────────────────────────────────────
+    # find_packages() BeratTrnMAFFT/ dizinini otomatik bulur
     packages=find_packages(),
+
+    # ── Bağımlılıklar ────────────────────────────────────────────
+    # Sadece numpy gerekiyor; standart kütüphane dışında başka bağımlılık yok
     install_requires=[
-        "numpy", 
+        "numpy>=1.20",
     ],
-    python_requires='>=3.6',
+
+    # ── Python Sürümü ────────────────────────────────────────────
+    python_requires=">=3.7",
+
+    # ── PyPI Kategorileri (Classifier) ───────────────────────────
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Topic :: Scientific/Engineering :: Bio-Informatics",
+        "Intended Audience :: Education",
+    ],
+
+    # ── Anahtar Kelimeler ────────────────────────────────────────
+    keywords="bioinformatics msa mafft sequence alignment fft",
 )
